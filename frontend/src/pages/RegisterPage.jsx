@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { UserPlus, Loader2, AlertCircle, Phone, Mail, Lock, User } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { getErrorMessage } from "../utils/formatters";
@@ -15,6 +15,9 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const { register } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || location.state?.from || "/";
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -45,7 +48,7 @@ export default function RegisterPage() {
         email: formData.email.trim() || undefined,
         password: formData.password,
       });
-      navigate("/");
+      navigate(from, { replace: true });
     } catch (err) {
       setError(getErrorMessage(err, "Registration failed"));
     } finally {
@@ -154,7 +157,7 @@ export default function RegisterPage() {
 
       <div className="text-center text-xs text-slate-500">
         Already registered?{" "}
-        <Link to="/login" className="font-bold text-brand-600 hover:underline">
+        <Link to="/login" state={{ from: location.state?.from }} className="font-bold text-brand-600 hover:underline">
           Sign In
         </Link>
       </div>
