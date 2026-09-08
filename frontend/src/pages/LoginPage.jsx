@@ -96,37 +96,6 @@ export default function LoginPage() {
         </button>
       </form>
 
-      {/* Quick Seed Credentials helper for development */}
-      <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-3 text-[11px] space-y-1.5 text-slate-600">
-        <p className="font-bold text-slate-700">Quick Test Credentials:</p>
-        <div className="flex justify-between items-center bg-white p-1.5 rounded-lg border border-slate-200">
-          <span>Customer: <code>9876543211</code> / <code>customer123</code></span>
-          <button
-            type="button"
-            onClick={() => {
-              setIdentifier("9876543211");
-              setPassword("customer123");
-            }}
-            className="text-[10px] font-bold text-brand-600 hover:underline"
-          >
-            Auto-fill
-          </button>
-        </div>
-        <div className="flex justify-between items-center bg-white p-1.5 rounded-lg border border-slate-200">
-          <span>Admin: <code>admin@localstore.com</code> / <code>admin123</code></span>
-          <button
-            type="button"
-            onClick={() => {
-              setIdentifier("admin@localstore.com");
-              setPassword("admin123");
-            }}
-            className="text-[10px] font-bold text-brand-600 hover:underline"
-          >
-            Auto-fill
-          </button>
-        </div>
-      </div>
-
       <div className="text-center text-xs text-slate-500">
         Don't have an account?{" "}
         <Link to="/register" state={{ from: location.state?.from }} className="font-bold text-brand-600 hover:underline">
