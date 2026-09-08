@@ -1,6 +1,15 @@
 import axios from "axios";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+let rawBaseUrl = import.meta.env.VITE_API_URL;
+
+// If VITE_API_URL is unset or accidentally set to the literal variable name in Vercel
+if (!rawBaseUrl || rawBaseUrl === "VITE_API_URL" || rawBaseUrl.includes("VITE_API_URL") || rawBaseUrl === "undefined") {
+  rawBaseUrl = import.meta.env.PROD 
+    ? "https://apna-kirana-mz8d.onrender.com" 
+    : "http://localhost:8000";
+}
+
+const API_BASE_URL = rawBaseUrl.replace(/\/+$/, "");
 
 const api = axios.create({
   baseURL: API_BASE_URL,
