@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center font-medium px-4 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white shadow-sm hover:shadow transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center font-medium px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-sm transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center font-medium px-4 py-2.5 rounded-xl bg-accent-600 hover:bg-accent-700 text-white shadow-sm transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .badge-offer {
+    @apply inline-flex items-center px-2 py-0.5 rounded-md text-xs font-semibold bg-accent-100 text-accent-700 border border-accent-200/60;
+  }
+
+  .badge-stock {
+    @apply inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200;
+  }
+
+  .card-product {
+    @apply bg-white rounded-2xl border border-slate-200/80 hover:border-brand-200 hover:shadow-soft transition-all duration-200 flex flex-col justify-between overflow-hidden;
+  }
+}
